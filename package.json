@@ -1,0 +1,117 @@
+{
+  "name": "@gaddario98/react-native-core",
+  "version": "1.0.11",
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c rollup.config.js && rollup -c rollup.dts.config.js"
+  },
+  "peerDependencies": {
+    "@gaddario98/expo": "*",
+    "@gaddario98/react-auth": "*",
+    "@gaddario98/react-form": "*",
+    "@gaddario98/react-localization": "*",
+    "@gaddario98/react-native-layouts": "*",
+    "@gaddario98/react-native-pages": "*",
+    "@gaddario98/react-native-providers": "*",
+    "@gaddario98/react-native-state": "*",
+    "@gaddario98/react-native-tabs": "*",
+    "@gaddario98/react-native-utiles": "*",
+    "@gaddario98/react-queries": "*",
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "react-native": "*",
+    "rollup-plugin-dts": "*"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/rollup-plugin-peer-deps-external": "^2",
+    "rollup": "^4.40.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "typescript": "^5.8.3"
+  },
+  "exports": {
+    "./auth": {
+      "import": "./dist/auth/index.mjs",
+      "types": "./dist/auth/index.d.ts"
+    },
+    "./config": {
+      "import": "./dist/config/index.mjs",
+      "types": "./dist/config/index.d.ts"
+    },
+    "./expo": {
+      "import": "./dist/expo/index.mjs",
+      "types": "./dist/expo/index.d.ts"
+    },
+    "./form": {
+      "import": "./dist/form/index.mjs",
+      "types": "./dist/form/index.d.ts"
+    },
+    "./layouts": {
+      "import": "./dist/layouts/index.mjs",
+      "types": "./dist/layouts/index.d.ts"
+    },
+    "./localization": {
+      "import": "./dist/localization/index.mjs",
+      "types": "./dist/localization/index.d.ts"
+    },
+    "./pages": {
+      "import": "./dist/pages/index.mjs",
+      "types": "./dist/pages/index.d.ts"
+    },
+    "./providers": {
+      "import": "./dist/providers/index.mjs",
+      "types": "./dist/providers/index.d.ts"
+    },
+    "./queries": {
+      "import": "./dist/queries/index.mjs",
+      "types": "./dist/queries/index.d.ts"
+    },
+    "./state": {
+      "import": "./dist/state/index.mjs",
+      "types": "./dist/state/index.d.ts"
+    },
+    "./tabs": {
+      "import": "./dist/tabs/index.mjs",
+      "types": "./dist/tabs/index.d.ts"
+    },
+    "./utiles": {
+      "import": "./dist/utiles/index.mjs",
+      "types": "./dist/utiles/index.d.ts"
+    },
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gaddario98/react-native-core"
+  },
+  "keywords": [
+    "react-native",
+    "tabs",
+    "utiles",
+    "expo",
+    "navigation",
+    "bottom-tabs",
+    "state",
+    "pages",
+    "layouts",
+    "providers",
+    "gaddario98"
+  ],
+  "author": "Giosuè Addario",
+  "bugs": {
+    "url": "https://github.com/gaddario98/react-native-core/issues"
+  },
+  "homepage": "https://github.com/gaddario98/react-native-core#readme"
+}
