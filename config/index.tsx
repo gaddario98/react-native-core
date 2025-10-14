@@ -8,7 +8,7 @@ import {
 } from "../localization";
 import { AppLinks, setAppLinks } from "../utiles";
 import { KeyboardAvoidingView, Platform } from "react-native";
-import { setDefaultFormFieldContainer } from "../form";
+import { setDefaultFormContainer } from "../form";
 
 export interface SetReactNativeConfigProps {
   pages: Partial<PageConfigProps>;
@@ -40,7 +40,7 @@ export const setReactNativeConfig = ({
   setReactNativePageConfig(pages);
   setEndpoints(endpoints);
   setAppLinks(links);
-  setDefaultFormFieldContainer(({ children }) => {
+  setDefaultFormContainer(({ children }) => {
     return (
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : undefined}

@@ -3,6 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import json from "@rollup/plugin-json";
+import babel from "@rollup/plugin-babel";
 
 // Centralized list of entry points. Each becomes dist/<name>/index.mjs (except root index)
 // Keep this list in sync with package.json exports and rollup.dts.config.js entries.
@@ -24,11 +25,7 @@ const entries = [
 ];
 
 // Extra externals that might not be declared as peer deps but should not be bundled.
-const extraExternal = [
-  "react",
-  "react/jsx-runtime",
-  "react-native"
-];
+const extraExternal = ["react", "react/jsx-runtime", "react-native"];
 
 const extensions = [".mjs", ".js", ".json", ".ts", ".tsx"];
 
@@ -39,7 +36,7 @@ const config = entries.map(({ name, input }) => {
     input,
     output: [
       {
-  file: name === "index" ? `dist/index.mjs` : `dist/${name}/index.mjs`,
+        file: name === "index" ? `dist/index.mjs` : `dist/${name}/index.mjs`,
         format: "esm",
         sourcemap: true,
       },
@@ -60,6 +57,11 @@ const config = entries.map(({ name, input }) => {
         noForceEmit: true,
       }),
       json(),
+      babel({
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+        plugins: ["babel-plugin-react-compiler"],
+        babelHelpers: "bundled",
+      }),
     ],
     onwarn(warning, warn) {
       // Reduce noise for common benign warnings; forward others.
