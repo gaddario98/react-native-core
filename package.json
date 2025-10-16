@@ -1,31 +1,23 @@
 {
   "name": "@gaddario98/react-native-core",
-  "version": "1.0.12",
-  "main": "dist/index.mjs",
+  "version": "1.0.15",
+  "type": "module",
+  "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "type": "module",
+  "react-native": "dist/index.js",
   "license": "MIT",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c rollup.config.js && rollup -c rollup.dts.config.js"
+    "build": "rollup -c rollup.config.js && rollup -c rollup.dts.config.js",
+    "prepublishOnly": "yarn build"
   },
   "devDependencies": {
-    "@gaddario98/expo": "^1.0.12",
-    "@gaddario98/react-auth": "^1.0.13",
-    "@gaddario98/react-form": "^1.0.15",
-    "@gaddario98/react-localization": "^1.0.12",
-    "@gaddario98/react-native-layouts": "^1.0.13",
-    "@gaddario98/react-native-pages": "^1.0.12",
-    "@gaddario98/react-native-providers": "^1.0.11",
-    "@gaddario98/react-native-state": "^1.0.10",
-    "@gaddario98/react-native-tabs": "^1.0.16",
-    "@gaddario98/react-native-utiles": "^1.0.10",
-    "@gaddario98/react-queries": "^1.0.16",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/react": "^19.2.0",
@@ -34,84 +26,111 @@
     "babel-plugin-react-compiler": "1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-native": "^0.82.0",
+    "react-native": "^0.81.0",
     "rollup": "^4.40.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "typescript": "^5.8.3"
   },
+  "dependencies": {
+    "@gaddario98/expo": "^1.0.15",
+    "@gaddario98/react-auth": "^1.0.14",
+    "@gaddario98/react-form": "^1.0.18",
+    "@gaddario98/react-localization": "^1.0.15",
+    "@gaddario98/react-native-layouts": "^1.0.16",
+    "@gaddario98/react-native-pages": "^1.0.15",
+    "@gaddario98/react-native-providers": "^1.0.14",
+    "@gaddario98/react-native-state": "^1.0.13",
+    "@gaddario98/react-native-tabs": "^1.0.19",
+    "@gaddario98/react-native-utiles": "^1.0.13",
+    "@gaddario98/react-queries": "^1.0.19"
+  },
   "peerDependencies": {
-    "@gaddario98/expo": "^1.0.12",
-    "@gaddario98/react-auth": "^1.0.13",
-    "@gaddario98/react-form": "^1.0.15",
-    "@gaddario98/react-localization": "^1.0.12",
-    "@gaddario98/react-native-layouts": "^1.0.13",
-    "@gaddario98/react-native-pages": "^1.0.12",
-    "@gaddario98/react-native-providers": "^1.0.11",
-    "@gaddario98/react-native-state": "^1.0.10",
-    "@gaddario98/react-native-tabs": "^1.0.16",
-    "@gaddario98/react-native-utiles": "^1.0.10",
-    "@gaddario98/react-queries": "^1.0.16",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-native": "^0.82.0"
+    "react": ">=18.0.0 <20.0.0",
+    "react-native": "^0.81.0"
   },
   "exports": {
     "./auth": {
+      "types": "./dist/auth/index.d.ts",
       "import": "./dist/auth/index.mjs",
-      "types": "./dist/auth/index.d.ts"
+      "require": "./dist/auth/index.js",
+      "default": "./dist/auth/index.js"
     },
     "./config": {
+      "types": "./dist/config/index.d.ts",
       "import": "./dist/config/index.mjs",
-      "types": "./dist/config/index.d.ts"
+      "require": "./dist/config/index.js",
+      "default": "./dist/config/index.js"
     },
     "./expo": {
+      "types": "./dist/expo/index.d.ts",
       "import": "./dist/expo/index.mjs",
-      "types": "./dist/expo/index.d.ts"
+      "require": "./dist/expo/index.js",
+      "default": "./dist/expo/index.js"
     },
     "./form": {
+      "types": "./dist/form/index.d.ts",
       "import": "./dist/form/index.mjs",
-      "types": "./dist/form/index.d.ts"
+      "require": "./dist/form/index.js",
+      "default": "./dist/form/index.js"
     },
     "./layouts": {
+      "types": "./dist/layouts/index.d.ts",
       "import": "./dist/layouts/index.mjs",
-      "types": "./dist/layouts/index.d.ts"
+      "require": "./dist/layouts/index.js",
+      "default": "./dist/layouts/index.js"
     },
     "./localization": {
+      "types": "./dist/localization/index.d.ts",
       "import": "./dist/localization/index.mjs",
-      "types": "./dist/localization/index.d.ts"
+      "require": "./dist/localization/index.js",
+      "default": "./dist/localization/index.js"
     },
     "./pages": {
+      "types": "./dist/pages/index.d.ts",
       "import": "./dist/pages/index.mjs",
-      "types": "./dist/pages/index.d.ts"
+      "require": "./dist/pages/index.js",
+      "default": "./dist/pages/index.js"
     },
     "./providers": {
+      "types": "./dist/providers/index.d.ts",
       "import": "./dist/providers/index.mjs",
-      "types": "./dist/providers/index.d.ts"
+      "require": "./dist/providers/index.js",
+      "default": "./dist/providers/index.js"
     },
     "./queries": {
+      "types": "./dist/queries/index.d.ts",
       "import": "./dist/queries/index.mjs",
-      "types": "./dist/queries/index.d.ts"
+      "require": "./dist/queries/index.js",
+      "default": "./dist/queries/index.js"
     },
     "./state": {
+      "types": "./dist/state/index.d.ts",
       "import": "./dist/state/index.mjs",
-      "types": "./dist/state/index.d.ts"
+      "require": "./dist/state/index.js",
+      "default": "./dist/state/index.js"
     },
     "./tabs": {
+      "types": "./dist/tabs/index.d.ts",
       "import": "./dist/tabs/index.mjs",
-      "types": "./dist/tabs/index.d.ts"
+      "require": "./dist/tabs/index.js",
+      "default": "./dist/tabs/index.js"
     },
     "./utiles": {
+      "types": "./dist/utiles/index.d.ts",
       "import": "./dist/utiles/index.mjs",
-      "types": "./dist/utiles/index.d.ts"
+      "require": "./dist/utiles/index.js",
+      "default": "./dist/utiles/index.js"
     },
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
     }
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaddario98/react-native-core"
+    "url": "git+https://github.com/gaddario98/react-native-core"
   },
   "keywords": [
     "react-native",
