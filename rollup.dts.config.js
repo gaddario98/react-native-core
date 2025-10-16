@@ -1,6 +1,8 @@
-import dts from "rollup-plugin-dts";
+import { createTypeDeclarations } from "../../rollup.common.config.js";
 
+// Definizione degli entry points (deve essere sincronizzata con rollup.config.js)
 const entries = [
+  { name: "index", input: "index.ts" },
   { name: "index", input: "index.ts" },
   { name: "auth", input: "auth/index.ts" },
   { name: "config", input: "config/index.tsx" },
@@ -16,11 +18,5 @@ const entries = [
   { name: "utiles", input: "utiles/index.ts" },
 ];
 
-export default entries.map(({ name, input }) => ({
-  input,
-  output: {
-    file: name === "index" ? `dist/index.d.ts` : `dist/${name}/index.d.ts`,
-    format: "es",
-  },
-  plugins: [dts()],
-}));
+// Configurazione per le dichiarazioni TypeScript
+export default createTypeDeclarations(entries);

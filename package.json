@@ -49,6 +49,12 @@
     "react-native": "^0.81.0"
   },
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
     "./auth": {
       "types": "./dist/auth/index.d.ts",
       "import": "./dist/auth/index.mjs",
@@ -120,12 +126,6 @@
       "import": "./dist/utiles/index.mjs",
       "require": "./dist/utiles/index.js",
       "default": "./dist/utiles/index.js"
-    },
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "default": "./dist/index.js"
     }
   },
   "repository": {
