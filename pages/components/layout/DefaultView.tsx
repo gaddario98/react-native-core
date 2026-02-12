@@ -2,40 +2,24 @@ import { useMemo, useState, useCallback } from "react";
 import { RefreshControl, ScrollView } from "react-native";
 import { withMemo } from "@gaddario98/react-core/utiles";
 import { QueriesArray } from "@gaddario98/react-core/queries";
-import {
-  FieldValues,
-  FormManagerConfig,
-  Submit,
-} from "@gaddario98/react-core/form";
-import { ContentItem, ViewSettings } from "@gaddario98/react-core/pages";
+import { FieldValues } from "@gaddario98/react-core/form";
+import { DefaultContainerProps } from "@gaddario98/react-core/pages";
 
 const DEFAULT_PADDING = 16;
 
-export interface CustomScrollViewProps<
-  F extends FieldValues,
-  Q extends QueriesArray,
-> {
-  viewSettings?: ViewSettings;
-  allContents: (ContentItem<F, Q> | FormManagerConfig<F> | Submit<F>)[];
-  children: React.JSX.Element[];
-  handleRefresh?: () => Promise<void>;
-  hasQueries: boolean;
-}
-
 const DefaultView = withMemo(
-  <F extends FieldValues, Q extends QueriesArray>({
+  <F extends FieldValues, Q extends QueriesArray, V extends Record<string, unknown>>({
     viewSettings,
     handleRefresh,
-    hasQueries,
     children,
-  }: CustomScrollViewProps<F, Q>) => {
+  }: DefaultContainerProps<F, Q, V>) => {
     const [refreshing, setRefreshing] = useState(false);
 
     const handleQueryRefresh = useCallback(async () => {
       if (!viewSettings?.disableRefreshing && handleRefresh) {
         setRefreshing(true);
         try {
-          handleRefresh();
+          await handleRefresh();
         } finally {
           setRefreshing(false);
         }
@@ -44,18 +28,13 @@ const DefaultView = withMemo(
 
     const refreshControl = useMemo(
       () =>
-        hasQueries && !viewSettings?.disableRefreshing ? (
+        !viewSettings?.disableRefreshing ? (
           <RefreshControl
             refreshing={refreshing}
             onRefresh={handleQueryRefresh}
           />
         ) : undefined,
-      [
-        handleQueryRefresh,
-        hasQueries,
-        refreshing,
-        viewSettings?.disableRefreshing,
-      ],
+      [handleQueryRefresh, refreshing, viewSettings?.disableRefreshing],
     );
 
     return (

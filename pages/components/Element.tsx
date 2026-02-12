@@ -1,21 +1,34 @@
-import { ViewSettings } from "@gaddario98/react-core/pages";
-import { memo } from "react";
-import { View, ViewStyle } from "react-native";
+import { FieldValues } from "@gaddario98/react-core/form";
+import {
+  DefaultContainerProps,
+  ViewSettings,
+} from "@gaddario98/react-core/pages";
+import { QueriesArray } from "@gaddario98/react-core/queries";
+import { View } from "react-native";
 
 const DEFAULT_PADDING = 16;
 
-const Element = ({
-  style,
+const Element = <
+  F extends FieldValues = FieldValues,
+  Q extends QueriesArray = QueriesArray,
+  V extends Record<string, unknown> = Record<string, unknown>,
+>({
   children,
-}: {
-  style?: ViewStyle;
-  children: React.JSX.Element[];
-} & (ViewSettings["header"] | ViewSettings["footer"])) => {
-  if (!children?.length) return null;
+  withoutPadding,
+}: Omit<DefaultContainerProps<F, Q, V>, "viewSettings"> &
+  ViewSettings["header"]) => {
+  if (!children?.length) return <></>;
 
   return (
-    <View style={[{ paddingHorizontal: DEFAULT_PADDING }, { height: "auto" }, style]}>{children}</View>
+    <View
+      style={[
+        { paddingHorizontal: withoutPadding ? 0 : DEFAULT_PADDING },
+        { height: "auto" },
+      ]}
+    >
+      {children}
+    </View>
   );
 };
 
-export default memo(Element);
+export default Element;

@@ -1,10 +1,10 @@
 import React, { memo, useMemo } from "react";
 import { Animated, Pressable, Text, View } from "react-native";
-import { useTranslation } from "react-i18next";
 import type { TabItemConfig } from "./Tabs";
 import { TabTriggerSlotProps } from "expo-router/ui";
 
 import { setActiveTabName, useActiveTab } from "./useActiveTab";
+import { useTranslation } from "../localization";
 
 const DEFAULT_COLORS = {
   primary: "#6200ee",
@@ -42,7 +42,7 @@ const AnimatedTabButton = ({
   const [glowAnim] = React.useState(() => new Animated.Value(0));
   const displayTitle = useMemo(
     () => (translateTitles ? t(tab.title || tab.name) : tab.title || tab.name),
-    [tab.title, tab.name, t, translateTitles]
+    [tab.title, tab.name, t, translateTitles],
   );
   const currentColors = useMemo(
     () => ({
@@ -53,11 +53,7 @@ const AnimatedTabButton = ({
         ? cfg.colors?.activeTint || DEFAULT_COLORS.primary
         : cfg.colors?.inactiveTint || DEFAULT_COLORS.onSurfaceVariant,
     }),
-    [
-      cfg.colors?.activeTint,
-      cfg.colors?.inactiveTint,
-      focused,
-    ]
+    [cfg.colors?.activeTint, cfg.colors?.inactiveTint, focused],
   );
 
   React.useEffect(() => {
@@ -137,7 +133,10 @@ const AnimatedTabButton = ({
               position: "relative",
               top: -2,
               right: 2,
-              backgroundColor: tab.badgeColor || cfg.colors?.secondary || DEFAULT_COLORS.secondary,
+              backgroundColor:
+                tab.badgeColor ||
+                cfg.colors?.secondary ||
+                DEFAULT_COLORS.secondary,
               borderRadius: 10,
               minWidth: 18,
               height: 18,
@@ -146,7 +145,10 @@ const AnimatedTabButton = ({
               paddingHorizontal: 5,
               borderWidth: 2,
               borderColor: cfg.colors?.background || DEFAULT_COLORS.surface,
-              shadowColor: tab.badgeColor || cfg.colors?.secondary || DEFAULT_COLORS.secondary,
+              shadowColor:
+                tab.badgeColor ||
+                cfg.colors?.secondary ||
+                DEFAULT_COLORS.secondary,
               shadowOpacity: 0.3,
               shadowRadius: 3,
               shadowOffset: { height: 1, width: 0 },
@@ -155,7 +157,10 @@ const AnimatedTabButton = ({
           >
             <Text
               style={{
-                color: tab.badgeTextColor || cfg.colors?.onSecondary || DEFAULT_COLORS.onSecondary,
+                color:
+                  tab.badgeTextColor ||
+                  cfg.colors?.onSecondary ||
+                  DEFAULT_COLORS.onSecondary,
                 fontSize: 8,
                 fontWeight: "800",
                 textAlign: "center",

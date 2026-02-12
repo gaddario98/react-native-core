@@ -4,25 +4,19 @@ import {
   AtomGeneratorOptions,
   atomStateGenerator,
   setCustomStorage,
-  useLoadingState,
-  useLoadingValue,
-  useSetLoading,
+  storage as webStorage,
+  SyncStorage,
+  AtomState,
+  PrimitiveAtom,
 } from "@gaddario98/react-core/state";
-import { compress, decompress } from "lz-string";
 
 const storage = {
   getItem: async (key: string): Promise<string | null> => {
     try {
       if (Platform.OS === "web") {
-        const compressedValue = localStorage.getItem(key);
-        if (compressedValue) {
-          const decompressed = decompress(compressedValue);
-          return decompressed ?? null;
-        }
-        return null;
+        return webStorage.getItem(key);
       } else {
-        const value = await AsyncStorage.getItem(key);
-        return value;
+        return await AsyncStorage.getItem(key);
       }
     } catch (error) {
       console.error("Error getting item:", error);
@@ -34,8 +28,7 @@ const storage = {
     try {
       if (!value) return;
       if (Platform.OS === "web") {
-        const compressedValue = compress(value);
-        localStorage.setItem(key, compressedValue);
+        webStorage.setItem(key, value);
       } else {
         await AsyncStorage.setItem(key, value);
       }
@@ -47,7 +40,7 @@ const storage = {
   removeItem: async (key: string): Promise<void> => {
     try {
       if (Platform.OS === "web") {
-        localStorage.removeItem(key);
+        webStorage.removeItem(key);
       } else {
         await AsyncStorage.removeItem(key);
       }
@@ -63,7 +56,7 @@ export {
   type AtomGeneratorOptions,
   atomStateGenerator,
   storage,
-  useLoadingState,
-  useLoadingValue,
-  useSetLoading,
+  type SyncStorage,
+  type AtomState,
+  type PrimitiveAtom,
 };
