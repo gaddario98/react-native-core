@@ -1,1 +1,1 @@
-export * from "@gaddario98/react-queries";
+export * from "@gaddario98/react-core/queries";

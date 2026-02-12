@@ -1,1 +1,1 @@
-export * from "@gaddario98/react-localization";
+export * from "@gaddario98/react-core/localization";

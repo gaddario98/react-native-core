@@ -1,1 +1,1 @@
-export * from "@gaddario98/react-auth";
+export * from "@gaddario98/react-core/auth";

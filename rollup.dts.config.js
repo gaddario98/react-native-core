@@ -10,7 +10,6 @@ const entries = [
   { name: "layouts", input: "layouts/index.ts" },
   { name: "localization", input: "localization/index.ts" },
   { name: "pages", input: "pages/index.ts" },
-  { name: "providers", input: "providers/index.ts" },
   { name: "queries", input: "queries/index.ts" },
   { name: "state", input: "state/index.ts" },
   { name: "tabs", input: "tabs/index.ts" },

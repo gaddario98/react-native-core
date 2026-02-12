@@ -5,7 +5,6 @@ export * from "./form";
 export * from "./layouts";
 export * from "./localization";
 export * from "./pages";
-export * from "./providers";
 export * from "./queries";
 export * from "./state";
 export * from "./tabs";
